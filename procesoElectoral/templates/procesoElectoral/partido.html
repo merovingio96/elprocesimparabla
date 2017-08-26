@@ -1,0 +1,22 @@
+{% extends 'procesoElectoral/index.html' %}
+{% block content %}
+    <h2>LISTA DE PARTIDOS</h2>
+    {% if user.is_authenticated %}
+        {% if user.username == "gestor" %}
+            <p><lu><a href="/partidos/new">Añadir nuevo partido</a></ul></p>
+            {% for partido in partidos %}
+                <p>{{ partido.nombre }} ||
+                <lu><a href="/partidos/{{ partido.pk }}/edit">Editar partido</a> ||</ul>
+                <lu><a href="/partidos/{{ partido.pk }}/delete">Borrar partido</a> ||</ul>
+            {% endfor %}
+        {% else %}
+            {% for partido in partidos %}
+                <p>{{ partido.nombre }}</p>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        {% for partido in partidos %}
+            <p>{{ partido.nombre }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

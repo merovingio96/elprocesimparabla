@@ -1,0 +1,9 @@
+{% extends 'procesoElectoral/index.html' %}
+{% block content %}
+    <h2>Login</h2>
+    <form method="POST">{% csrf_token %}
+        <input type="text" name="username" id="inputUsername" placeholder="Nombre de Usuario">
+        <input type="password" name="password" id="inputPassword" placeholder="Contraseña">
+        <button type="submit">Entrar</button>
+    </form>
+{% endblock %}

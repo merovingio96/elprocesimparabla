@@ -1,0 +1,7 @@
+{% extends 'procesoElectoral/index.html' %}
+{% block content %}
+    <h2>OPCIONES MILITANTE</h2>
+    {% if user.is_authenticated %}
+    <p><lu><a href="/militantes/new">Añadir nuevo militante</a></ul></p>
+    {% endif %}
+{% endblock %}
