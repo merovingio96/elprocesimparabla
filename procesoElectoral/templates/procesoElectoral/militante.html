@@ -13,7 +13,7 @@
         {% else %}
             {% for militante in militantes %}
                 <p>{{ militante.nombre }}, {{ militante.dni }}
-                <lu><a href="/militante/{{ militante.pk }}">Detalle militante</a></ul></p>
+                <lu><a href="/militantes/{{ militante.pk }}">Detalle militante</a></ul></p>
             {% endfor %}
         {% endif %}
     {% endif %}

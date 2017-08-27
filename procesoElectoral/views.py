@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
+from django.db.models import Count
 from .models import Partido, Agrupacion, Militante
 from .forms import AuthenticationForm, PartidoForm, AgrupacionForm, MilitanteForm
 
@@ -53,6 +54,13 @@ def listPartidos(request):
 
     partidos = Partido.objects.all()
     return render(request, 'procesoElectoral/partido.html', {'partidos':partidos})
+    
+    
+@login_required
+def detailPartido(request, id_partido):
+
+    partido = get_object_or_404(Partido, pk=id_partido)
+    return render(request, 'procesoElectoral/detail_partido.html', {'partido':partido})
     
 
 @login_required
@@ -138,7 +146,7 @@ class AddAgrupacion(CreateView):
     
     def get(self, request, *args, **kwargs):
     
-        if request.user.is_staff:
+        if request.user.is_active:
         
             form = self.form_class()
             context = {'form':form,'titulo':"Añadir nueva Agrupacion"}
@@ -150,7 +158,7 @@ class AddAgrupacion(CreateView):
             
     def post(self, request, *args, **kwargs):
     
-        if request.user.is_staff:
+        if request.user.is_active:
         
             form = self.form_class(request.POST, request.FILES)
             
@@ -250,14 +258,17 @@ def deleteMilitante(request, id_militante):
 @login_required
 def cuentaMilitantes(request, id_partido):
 
-    partido = get_object_or_404(Partido, pk=id_partido)
-    contador = 0
-    
-    query_agrupacion = partido.agrupacion_set.all()
-    
-    for agrupacion in query_agrupacion:
-    
-        query_militante = agrupacion.militante_set.all()
-        contador = contador + len(query_militante)
-        
-    return contador
+   partido = get_object_or_404(Partido, pk=id_partido)
+   contador = 0
+   
+   query_agrupaciones = partido.agrupacion_set.all()
+   
+   numero_agrupaciones = query_agrupaciones.count()
+   
+   for agrupacion in query_agrupaciones:
+   
+       query_militantes = agrupacion.militante_set.all()
+       contador = contador + query_militantes.count()
+       
+   return render(request, 'procesoElectoral/total_militantes_partido.html', {'contador':contador,'partido':partido,'numero_agrupaciones':numero_agrupaciones})
+   

@@ -6,12 +6,15 @@
             <p><lu><a href="/partidos/new">Añadir nuevo partido</a></ul></p>
             {% for partido in partidos %}
                 <p>{{ partido.nombre }} ||
+                <lu><a href="/partidos/{{ partido.pk }}">Detalle partido</a> ||</ul>
                 <lu><a href="/partidos/{{ partido.pk }}/edit">Editar partido</a> ||</ul>
                 <lu><a href="/partidos/{{ partido.pk }}/delete">Borrar partido</a> ||</ul>
+                <lu><a href="/partidos/{{ partido.pk }}/numero-militantes">Ver total militantes</a></ul></p>
             {% endfor %}
         {% else %}
             {% for partido in partidos %}
-                <p>{{ partido.nombre }}</p>
+                <p>{{ partido.nombre }}
+                <lu><a href="/partidos/{{ partido.pk }}">Detalle partido</a></ul></p>
             {% endfor %}
         {% endif %}
     {% else %}
