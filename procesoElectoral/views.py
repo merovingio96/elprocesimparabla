@@ -245,26 +245,6 @@ def deleteMilitante(request, id_militante):
         return redirect('/militantes')
         
     return render(request, 'procesoElectoral/delete_militante.html')
-
-@login_required
-def addMilitante(request):
-    
-    if request.method == 'POST':
-    
-        form = MilitanteForm(request.POST)
-        
-        if form.is_valid:
-        
-            militante = form.save(commit=False)
-            militante.save()
-            return redirect('/militantes')
-            
-    else:
-    
-        form = MilitanteForm()
-        
-    context = {'form':form}
-    return render(request, 'procesoElectoral/add_militante.html', context)
     
 
 @login_required
