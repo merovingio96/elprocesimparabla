@@ -12,7 +12,7 @@
         <div class="content container">
             {% if user.is_authenticated %}
                 <p>Bienvenido a la pagina, <b><i>{{ user.username }}</i></b>.</p>
-                {% if user.username == "gestor" %}
+                {% if user.username == "gestor" or user.username == "abraham" %}
                     <p><a href="/logout">Logout</a> ||
                     <a href="/partidos">Ir a partidos</a> ||
                     <a href="/agrupaciones">Ir a agrupaciones</a> ||

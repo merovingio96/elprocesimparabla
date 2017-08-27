@@ -2,12 +2,13 @@
 {% block content %}
     <h2>LISTA DE AGRUPACIONES</h2>
     {% if user.is_authenticated %}
-        {% if user.username == "gestor" %}
+        {% if user.username == "gestor" or user.username == "abraham" %}
             <p><lu><a href="/agrupaciones/new">Añadir nueva agrupacion</a></ul></p>
             {% for agrupacion in agrupaciones %}
                 <p>{{ agrupacion.nombre }} ||
                 <lu><a href="/agrupaciones/{{ agrupacion.pk }}">Detalle agrupacion</a> ||</ul>
-                <lu><a href="/agrupaciones/{{ agrupacion.pk }}/edit">Editar agrupacion</a> ||</ul></p>
+                <lu><a href="/agrupaciones/{{ agrupacion.pk }}/edit">Editar agrupacion</a> ||</ul>
+                <lu><a href="/agrupaciones/{{ agrupacion.pk }}/delete">Eliminar agrupacion</a> ||</ul></p>
             {% endfor %}
         {% else %}
             {% for agrupacion in agrupaciones %}

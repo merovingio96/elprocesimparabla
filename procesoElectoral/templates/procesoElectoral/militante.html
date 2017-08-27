@@ -1,7 +1,20 @@
 {% extends 'procesoElectoral/index.html' %}
 {% block content %}
-    <h2>OPCIONES MILITANTE</h2>
+    <h2>LISTA DE MILITANTES</h2>
     {% if user.is_authenticated %}
-    <p><lu><a href="/militantes/new">Añadir nuevo militante</a></ul></p>
+        {% if user.username == "gestor" or user.username == "abraham" %}
+            <p><lu><a href="/militantes/new">Añadir nuevo militante</a></ul></p>
+            {% for militante in militantes %}
+                <p>{{ militante.nombre }}, {{ militante.dni }}
+                <lu><a href="/militantes/{{ militante.pk }}">Detalle militante</a> ||</ul>
+                <lu><a href="/militantes/{{ militante.pk }}/edit">Editar militante</a> ||</ul>
+                <lu><a href="/militantes/{{ militante.pk }}/delete">Eliminar militante</a></ul></p>
+            {% endfor %}
+        {% else %}
+            {% for militante in militantes %}
+                <p>{{ militante.nombre }}, {{ militante.dni }}
+                <lu><a href="/militante/{{ militante.pk }}">Detalle militante</a></ul></p>
+            {% endfor %}
+        {% endif %}
     {% endif %}
 {% endblock %}

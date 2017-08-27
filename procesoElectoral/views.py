@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from .models import Partido, Agrupacion, Militante
 from .forms import AuthenticationForm, PartidoForm, AgrupacionForm, MilitanteForm
@@ -170,11 +170,81 @@ class EditAgrupacion(UpdateView):
     form_class = AgrupacionForm
         
 
+@method_decorator(login_required, name='dispatch')
+class DeleteAgrupacion(DeleteView):
+
+    model = Agrupacion
+
+
 @login_required
-def goToMilitantes(request):
+def listMilitantes(request):
 
-    return render(request, 'procesoElectoral/militante.html')
+    militantes = Militante.objects.all()
+    return render(request, 'procesoElectoral/militante.html', {'militantes':militantes})
+    
+    
+@login_required
+def detailMilitante(request, id_militante):
 
+    militante = get_object_or_404(Militante, pk=id_militante)
+    return render(request, 'procesoElectoral/detail_militante.html', {'militante':militante})
+    
+    
+@login_required
+def addMilitante(request):
+    
+    if request.method == 'POST':
+    
+        form = MilitanteForm(request.POST)
+        
+        if form.is_valid:
+        
+            militante = form.save(commit=False)
+            militante.save()
+            return redirect('/militantes')
+            
+    else:
+    
+        form = MilitanteForm()
+        
+    context = {'form':form}
+    return render(request, 'procesoElectoral/add_militante.html', context)
+    
+    
+@login_required
+def editMilitante(request, id_militante):
+
+    militante = get_object_or_404(Militante, pk=id_militante)
+     
+    if request.method == "POST":
+    
+        form = MilitanteForm(request.POST, instance=militante)
+        
+        if form.is_valid:
+        
+            militante = form.save(commit=False)
+            militante.save()
+    	    return redirect('/militantes')
+    	    
+    else:
+    
+        form = MilitanteForm()
+        
+    context = {'form':form}
+    return render(request, 'procesoElectoral/edit_militante.html', context)
+   
+
+@login_required
+def deleteMilitante(request, id_militante):
+
+    militante = get_object_or_404(Militante, pk=id_militante)
+    
+    if request.method == 'POST':
+        
+        militante.delete()
+        return redirect('/militantes')
+        
+    return render(request, 'procesoElectoral/delete_militante.html')
 
 @login_required
 def addMilitante(request):

@@ -1,0 +1,112 @@
+@method_decorator(login_required, name='dispatch')
+class ListAgrupaciones(ListView):
+    
+    model = Agrupacion
+        
+        
+@method_decorator(login_required, name='dispatch')
+class DetailAgrupacion(DetailView):
+    
+    model = Agrupacion
+        
+
+@method_decorator(login_required, name='dispatch')
+class AddAgrupacion(CreateView):
+
+    model = Agrupacion
+    form_class = AgrupacionForm
+    
+
+@method_decorator(login_required, name='dispatch')
+class EditAgrupacion(UpdateView):
+
+    model = Agrupacion
+    form_class = AgrupacionForm
+    
+    
+@method_decorator(login_required, name='dispatch')
+class DeleteAgrupacion(DeleteView):
+
+    model = Agrupacion
+    
+    
+    
+@login_required
+def listMilitantes(request):
+
+    militantes = Militante.objects.all()
+    return render(request, 'procesoElectoral/militante.html', {'militantes':militantes})
+
+@login_required
+def addMilitante(request):
+    
+    if request.method == 'POST':
+    
+        form = MilitanteForm(request.POST)
+        
+        if form.is_valid:
+        
+            militante = form.save(commit=False)
+            militante.save()
+            return redirect('/militantes')
+            
+    else:
+    
+        form = MilitanteForm()
+        
+    context = {'form':form}
+    return render(request, 'procesoElectoral/add_militante.html', context)
+    
+    
+@login_required
+def editMilitante(request, id_militante):
+
+    militante = get_object_or_404(Militante, pk=id_militante)
+     
+    if request.method == "POST":
+    
+        form = MilitanteForm(request.POST, instance=militante)
+        
+        if form.is_valid:
+        
+            militante = form.save(commit=False)
+            militante.save()
+    	    return redirect('/militantes')
+    	    
+    else:
+    
+        form = MilitanteForm()
+        
+    context = {'form':form}
+    return render(request, 'procesoElectoral/edit_militante.html', context)
+   
+
+@login_required
+def deleteMilitante(request, id_militante):
+
+    militante = get_object_or_404(Militante, pk=id_militante)
+    
+    if request.method == 'POST':
+        
+        militante.delete()
+        return redirect('/militantes')
+        
+    return render(request, 'procesoElectoral/delete_militante.html')
+    
+    
+    
+    url(r'^$', views.index, name='home'),
+    url(r'^login/$', views.userLogin, name='login_usuario'),
+    url(r'^logout/$', views.userLogout, name='logout_usuario'),
+    url(r'^partidos/$', views.listPartidos, name='lista_de_partidos'),
+    url(r'^partidos/new/$', views.addPartido, name='anadir_partido'),
+    url(r'^partidos/(?P<id_partido>[-\w]+)/edit/$', views.editPartido, name='editar_partido'),
+    url(r'^partidos/(?P<id_partido>[-\w]+)/delete/$', views.deletePartido, name='eliminar_partido'),
+    url(r'^agrupaciones/$', views.ListAgrupaciones.as_view(success_url="/agrupaciones"), name='lista_de_agrupaciones'),
+    url(r'^agrupaciones/new/$', views.AddAgrupacion.as_view(success_url="/agrupaciones"), name='anadir_agrupacion'),
+    url(r'^agrupaciones/(?P<pk>[-\w]+)/edit/$', views.EditAgrupacion.as_view(success_url="/agrupaciones"), name='editar_agrupacion'),
+    url(r'^agrupaciones/(?P<pk>[-\w]+)/$', views.DetailAgrupacion.as_view(success_url="/agrupaciones"), name='detalle_agrupacion'),
+    url(r'^militantes/$', views.listMilitantes, name='militantes'),
+    url(r'^militantes/new/$', views.addMilitante, name='anadir_militante'),
+    url(r'^militantes/(?P<id_militante>[-\w]+)/edit/$', views.editMilitante, name='editar_militante'),
+    url(r'^militantes/(?P<id_militante>[-\w]+)/delete/$', views.deleteMilitante, name='eliminar_militante'),
