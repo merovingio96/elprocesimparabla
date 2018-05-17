@@ -136,8 +136,6 @@ var ray;
 
         plugin.init();
 
-    }
-
     $.fn.googlePlaces = function(options) {
 
         return this.each(function() {
