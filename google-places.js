@@ -1,4 +1,5 @@
 var ray;
+var plugin;
 
 (function($) {
 
@@ -14,7 +15,7 @@ var ray;
             , rotateTime: false
         };
 
-        var plugin = this;
+        plugin = this;
 
         plugin.settings = {}
 
