@@ -78,18 +78,20 @@
 
 	// RENDERIZADO DE RESEÑAS
         var renderReviews = function(reviews){
-          reviews = sort_by_date(reviews); //Primera ordenación por fecha
-          reviews = filter_minimum_rating(reviews); //Se desechan las reseñas con peor valoración que min_rating
-          var html = "";
-          var row_count = (plugin.settings.max_rows > 0)? plugin.settings.max_rows - 1 : reviews.length - 1;
-          // make sure the row_count is not greater than available records
-          row_count = (row_count > reviews.length-1)? reviews.length -1 : row_count;
-          for (var i = row_count; i >= 0; i--) {
-            var stars = renderStars(reviews[i].rating);
-            var date = convertTime(reviews[i].time);
-            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p><p class='review-author-url'>"+reviews[i].author_url+"</p></div>" //SE CREA UN CONTENEDOR POR CADA PAR USUARIO-RESEÑA
-          };
-          $element.append(html);
+	  if (reviews !== undefined) {
+            reviews = sort_by_date(reviews); //Primera ordenación por fecha
+            reviews = filter_minimum_rating(reviews); //Se desechan las reseñas con peor valoración que min_rating
+            var html = "";
+            var row_count = (plugin.settings.max_rows > 0)? plugin.settings.max_rows - 1 : reviews.length - 1;
+            // make sure the row_count is not greater than available records
+            row_count = (row_count > reviews.length-1)? reviews.length -1 : row_count;
+            for (var i = row_count; i >= 0; i--) {
+              var stars = renderStars(reviews[i].rating);
+              var date = convertTime(reviews[i].time);
+              html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p><p class='review-author-url'>"+reviews[i].author_url+"</p></div>" //SE CREA UN CONTENEDOR POR CADA PAR USUARIO-RESEÑA
+            };
+            $element.append(html);
+	  }
         }
         
         var initRotation = function() {
