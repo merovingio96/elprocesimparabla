@@ -66,11 +66,13 @@
 
 	//FILTRADO DE RESEÑAS (NO MENORES A MIN_RATING)
         var filter_minimum_rating = function(reviews){
-          for (var i = reviews.length -1; i >= 0; i--) {
-            if(reviews[i].rating < plugin.settings.min_rating){
-              reviews.splice(i,1);
+	  if (reviews !== undefined) {
+            for (var i = reviews.length -1; i >= 0; i--) {
+              if(reviews[i].rating < plugin.settings.min_rating){
+                reviews.splice(i,1);
+              }
             }
-          }
+	  }
           return reviews;
         }
 
