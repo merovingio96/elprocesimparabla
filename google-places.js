@@ -51,7 +51,7 @@
 
 	//ORDENAR RESEÑAS POR FECHA
         var sort_by_date = function(ray) {
-	  if (ray !== indefined) {
+	  if (ray !== undefined) {
             ray.sort(function(a, b){
               var keyA = new Date(a.time),
               keyB = new Date(b.time);
