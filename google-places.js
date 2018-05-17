@@ -159,7 +159,7 @@ Thanks user peledies for the code!!*/
         var renderRating = function(rating){
             var html = "";
             var star = renderAverageStars(rating);
-            html = "<div class='average-rating'><h4>"+star+"</h4></div>";
+            //html = "<div class='average-rating'><h4>"+star+"</h4></div>";
             $element.append(html);
         }
 
