@@ -140,7 +140,7 @@
 
         return this.each(function() {
             if (undefined == $(this).data('googlePlaces')) {
-                var plugin = new $.googlePlaces(this, options);
+                plugin = new $.googlePlaces(this, options);
                 $(this).data('googlePlaces', plugin);
             }
         });
