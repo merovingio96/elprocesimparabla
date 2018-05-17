@@ -1,3 +1,6 @@
+var reviews;
+var sort_by_date;
+
 (function($) {
 
     $.googlePlaces = function(element, options) {
@@ -50,7 +53,7 @@
         }
 
 	//ORDENAR RESEÑAS POR FECHA
-        /*var sort_by_date = function(ray) {
+        sort_by_date = function(ray) {
             ray.sort(function(a, b){
               var keyA = new Date(a.time),
               keyB = new Date(b.time);
@@ -61,7 +64,7 @@
             });
 	  }
           return ray;
-        }*/
+        }
 
 	//FILTRADO DE RESEÑAS (NO MENORES A MIN_RATING)
         var filter_minimum_rating = function(reviews){
@@ -75,7 +78,7 @@
 
 	// RENDERIZADO DE RESEÑAS
         var renderReviews = function(reviews){
-            //reviews = sort_by_date(reviews); //Primera ordenación por fecha
+            reviews = sort_by_date(reviews); //Primera ordenación por fecha
             reviews = filter_minimum_rating(reviews); //Se desechan las reseñas con peor valoración que min_rating
             var html = "";
             var row_count = (plugin.settings.max_rows > 0)? plugin.settings.max_rows - 1 : reviews.length - 1;
