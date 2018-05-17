@@ -50,8 +50,7 @@
         }
 
 	//ORDENAR RESEÑAS POR FECHA
-        var sort_by_date = function(ray) {
-	  if (ray !== undefined) {
+        /*var sort_by_date = function(ray) {
             ray.sort(function(a, b){
               var keyA = new Date(a.time),
               keyB = new Date(b.time);
@@ -62,11 +61,10 @@
             });
 	  }
           return ray;
-        }
+        }*/
 
 	//FILTRADO DE RESEÑAS (NO MENORES A MIN_RATING)
         var filter_minimum_rating = function(reviews){
-	  if (reviews !== undefined) {
             for (var i = reviews.length -1; i >= 0; i--) {
               if(reviews[i].rating < plugin.settings.min_rating){
                 reviews.splice(i,1);
@@ -78,8 +76,7 @@
 
 	// RENDERIZADO DE RESEÑAS
         var renderReviews = function(reviews){
-	  if (reviews !== undefined) {
-            reviews = sort_by_date(reviews); //Primera ordenación por fecha
+            //reviews = sort_by_date(reviews); //Primera ordenación por fecha
             reviews = filter_minimum_rating(reviews); //Se desechan las reseñas con peor valoración que min_rating
             var html = "";
             var row_count = (plugin.settings.max_rows > 0)? plugin.settings.max_rows - 1 : reviews.length - 1;
