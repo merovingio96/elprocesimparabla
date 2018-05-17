@@ -4,7 +4,6 @@ Thanks to user peledies!! */
 (function($) {
 
     var namespace = 'googlePlaces';
-	var ray;
 
     $.googlePlaces = function(element, options) {
 
@@ -137,7 +136,7 @@ Thanks to user peledies!! */
           });
         }
 
-        var sort_by_date = function(ray) {
+        var sort_by_date = function(var ray) {
           ray.sort(function(a, b){
             var keyA = new Date(a.time),
             keyB = new Date(b.time);
