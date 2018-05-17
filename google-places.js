@@ -156,12 +156,12 @@ Thanks user peledies for the code!!*/
           return reviews;
         }
 
-        /*var renderRating = function(rating){
+        var renderRating = function(rating){
             var html = "";
             var star = renderAverageStars(rating);
             html = "<div class='average-rating'><h4>"+star+"</h4></div>";
             $element.append(html);
-        }*/
+        }
 
         var renderReviews = function(reviews){
           reviews = sort_by_date(reviews);
@@ -248,7 +248,7 @@ Thanks user peledies for the code!!*/
           return stars;
         }
 
-        /*var renderAverageStars = function(rating){
+        var renderAverageStars = function(rating){
             var stars = "<div class='review-stars'><ul><li><i>"+rating+"&nbsp;</i></li>";
             var activeStars = parseInt(rating);
             var inactiveStars = 5 - activeStars;
@@ -271,7 +271,7 @@ Thanks user peledies for the code!!*/
             }
             stars += "</ul></div>";
             return stars;
-        }*/
+        }
 
         var convertTime = function(UNIX_timestamp){
           var a = new Date(UNIX_timestamp * 1000);
