@@ -88,7 +88,7 @@
             for (var i = row_count; i >= 0; i--) {
               var stars = renderStars(reviews[i].rating);
               var date = convertTime(reviews[i].time);
-              html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p><p class='review-author-url'>"+reviews[i].author_url+"</p></div>" //SE CREA UN CONTENEDOR POR CADA PAR USUARIO-RESEÑA
+              html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p></div>" //SE CREA UN CONTENEDOR POR CADA PAR USUARIO-RESEÑA
             };
             $element.append(html);
 	  }
