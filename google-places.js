@@ -1,5 +1,4 @@
-var reviews;
-var sort_by_date;
+var ray;
 
 (function($) {
 
