@@ -1,6 +1,5 @@
 /* https://github.com/peledies/google-places 
-Thanks to user peledies!! */
-
+Thanks user peledies for the code!!*/
 (function($) {
 
     var namespace = 'googlePlaces';
@@ -136,7 +135,7 @@ Thanks to user peledies!! */
           });
         }
 
-        var sort_by_date = function(var ray) {
+        var sort_by_date = function(ray) {
           ray.sort(function(a, b){
             var keyA = new Date(a.time),
             keyB = new Date(b.time);
@@ -160,7 +159,7 @@ Thanks to user peledies!! */
         var renderRating = function(rating){
             var html = "";
             var star = renderAverageStars(rating);
-            html = "<div class='average-rating'><h4>"+star+"</h4></div>";
+            html = "<div class='average-rating'><p>"+star+"</p></div>";
             $element.append(html);
         }
 
