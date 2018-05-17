@@ -1,9 +1,8 @@
-var ray;
-var plugin;
-
 (function($) {
 
     var namespace = 'googlePlaces';
+    var ray;
+    var plugin;
 
     $.googlePlaces = function(element, options) {
 
