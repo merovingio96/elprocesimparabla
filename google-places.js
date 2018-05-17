@@ -2,6 +2,8 @@ var ray;
 
 (function($) {
 
+    var namespace = 'googlePlaces';
+
     $.googlePlaces = function(element, options) {
 
         var defaults = {
