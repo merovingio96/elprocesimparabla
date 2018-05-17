@@ -70,7 +70,6 @@
                 reviews.splice(i,1);
               }
             }
-	  }
           return reviews;
         }
 
@@ -88,7 +87,6 @@
               html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p></div>" //SE CREA UN CONTENEDOR POR CADA PAR USUARIO-RESEÑA
             };
             $element.append(html);
-	  }
         }
         
         var initRotation = function() {
