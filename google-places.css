@@ -23,9 +23,9 @@ flex: 1 1 20%;
 }
 
 .review-meta, .review-stars {text-align:center; font-size:105%;}
-.review-author { text-transform: capitalize; font-weight:bold; }
+.review-author { text-transform: capitalize; font-weight:bold; font-family:"Proxima Nova Alt Regular",! sans-serif important;}
 .review-date {opacity:.6; display:block;}
-.review-text {  line-height:1.55; text-align:justify; max-width:32em; margin:auto;}
+.review-text {  line-height:1.55; text-align:justify; max-width:32em; margin:auto; font-family:"Proxima Nova Alt Regular",! sans-serif important;}
 
  
 
@@ -43,7 +43,7 @@ line-height:1;
 }
 
 .review-stars ul li i {
-  color: #C714DF;
+  color: #EDD97C;
   font-size: 1.4em;
   font-style:normal;
 }
