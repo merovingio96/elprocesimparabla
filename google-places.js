@@ -182,9 +182,14 @@ Thanks user peledies for the code!!*/
             var json_response;
             //Google+ API devuelve una respuesta JSON pasándole url_image
             $.getJSON(url_image,function(json){
-                json_response = json;                   
+                json_response = json;
+                checkResponse();
             });
-            console.log(json_response);
+             
+           function checkResponse() {
+                console.log(json_response);
+           }
+  
             html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
           };
           $element.append(html);
