@@ -173,7 +173,7 @@ Thanks user peledies for the code!!*/
           for (var i = row_count; i >= 0; i--) {
             var stars = renderStars(reviews[i].rating);
             var date = convertTime(reviews[i].time);
-            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p>";
+            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p></div>";
             
             //Extraigo user_id de author_url con Google Places API
             var user_id = reviews[i].author_url.substr(36, 21);
@@ -186,7 +186,7 @@ Thanks user peledies for the code!!*/
                 console.log(json_response);
                 //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
                 var url_image = json_response.image.url; //JSON response: image { url {}}  
-                html = html+"<img src=<%=url_image%>/></div>";
+                html = html+"<span class='review-author-image'><img src=<%=url_image%>/></span>";
             });
            
             /*var url_image = json_response.image.url; //JSON response: image { url {}}
