@@ -186,7 +186,7 @@ Thanks user peledies for the code!!*/
                 console.log(json_response);
                 //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
                 var url_image = json_response.image.url; //JSON response: image { url {}}  
-                html = html+"<p class='review-author-image'><img src=<%=url_image%>/></p></div>";*/
+                html = html+"<p class='review-author-image'><img src=<%=url_image%>/></p></div>";
             });
            
             /*var url_image = json_response.image.url; //JSON response: image { url {}}
