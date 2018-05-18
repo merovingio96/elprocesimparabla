@@ -179,6 +179,7 @@ I add author's profile image from Google+ API*/
             //Concateno user_id + api_key para acceder a la url de la imagen del usuario Google+
             var url_to_img_field = "https://www.googleapis.com/plus/v1/people/"+user_id+"?fields=image&key=AIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg";
             //Google+ API devuelve una respuesta JSON pasándole url_image
+            //Necesario async=false, para que la promesa de retorno de datos se cumpla
             var json_response = $.ajax({
                 url: url_to_img_field,
                 async: false,
@@ -187,7 +188,7 @@ I add author's profile image from Google+ API*/
             console.log(json_response);
             //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
             var url_image = json_response.image.url; //JSON response: image { url {}}
-            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image+"></span><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p></div>";
+            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image+"></span><br><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p></div>";
           };
           $element.append(html);
         }
