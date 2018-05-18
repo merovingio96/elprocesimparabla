@@ -178,17 +178,16 @@ Thanks user peledies for the code!!*/
             //Extraigo user_id de author_url con Google Places API
             var user_id = reviews[i].author_url.substr(36, 21);
             //Concateno user_id + api_key para acceder a la url de la imagen del usuario Google+
-            var url_image = "https://www.googleapis.com/plus/v1/people/"+user_id+"?fields=image&keyAIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg";
+            var url_to_img_field = "https://www.googleapis.com/plus/v1/people/"+user_id+"?fields=image&keyAIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg";
             var json_response;
             //Google+ API devuelve una respuesta JSON pasándole url_image
-            $.getJSON(url_image, function(err, data) {
-                if (err !== null) {
-                    alert('Something went wrong: ' + err);
-                } else {
-                    alert('Your query count: ' + data.query.count);
-                }
+            $.getJSON(url_to_img_field, function (json) {
+                json_response = json;
             });
-  
+            //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
+            var url_image = json_response.image.url;
+            <img src=url_image></img>
+            
             html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
           };
           $element.append(html);
