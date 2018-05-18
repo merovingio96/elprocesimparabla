@@ -181,14 +181,13 @@ Thanks user peledies for the code!!*/
             var url_image = "https://www.googleapis.com/plus/v1/people/"+user_id+"?fields=image&keyAIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg";
             var json_response;
             //Google+ API devuelve una respuesta JSON pasándole url_image
-            $.getJSON(url_image,function(json){
-                json_response = json;
-                checkResponse();
+            $.getJSON(url_image, function(err, data) {
+                if (err !== null) {
+                    alert('Something went wrong: ' + err);
+                } else {
+                    alert('Your query count: ' + data.query.count);
+                }
             });
-             
-           function checkResponse() {
-                console.log(json_response);
-           }
   
             html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
           };
