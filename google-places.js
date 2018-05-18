@@ -183,6 +183,7 @@ Thanks user peledies for the code!!*/
             //Google+ API devuelve una respuesta JSON pasándole url_image
             $.getJSON(url_to_img_field, function (json) {
                 json_response = json;
+                console.log(json_response);
                 //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
             /*var url_image = json_response.image.url; //JSON response: image { url {}}  
             html = html+"<p class='review-author-image'><img src=<%=url_image%>/></p></div>";*/
