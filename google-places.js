@@ -175,9 +175,8 @@ Thanks user peledies for the code!!*/
             var date = convertTime(reviews[i].time);
             html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p>"
             
-            var url = reviews[i].author_url
-            url.split("/").slice(-1)[0];
-            html = html+"<p class='url-author-split'>"+url+"</p></div>"
+            var user_id = reviews[i].author_url.substr(36, 56);
+            html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
           };
           $element.append(html);
         }
