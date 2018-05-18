@@ -175,7 +175,16 @@ Thanks user peledies for the code!!*/
             var date = convertTime(reviews[i].time);
             html = html+"<div class='review-item'><div class='review-meta'><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text'>"+reviews[i].text+"</p>"
             
+            //Extraigo user_id de author_url con Google Places API
             var user_id = reviews[i].author_url.substr(36, 21);
+            //Concateno user_id + api_key para acceder a la url de la imagen del usuario Google+
+            var url_image = "https://www.googleaplis.com/plus/v1/people/"+user_id+"/?fields=image&keyAIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg";
+            var json_response;
+            //Google+ API devuelve una respuesta JSON pasándole url_image
+            $.getJSON(url_image,function(json){
+                json_response = json;                   
+            });
+            console.log(json_response);
             html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
           };
           $element.append(html);
