@@ -185,8 +185,8 @@ Thanks user peledies for the code!!*/
                 json_response = json;
             });
             //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
-            var url_image = json_response.image.url;
-             console.log(url_image);
+            //var url_image = json_response.image.url;
+             console.log(json_response);
               //<img src=<%=url_image%> />
             
             html = html+"<p class='url-author-split'>"+user_id+"</p></div>"
