@@ -1,5 +1,9 @@
 #map-plug {display:none;}
 
+img {
+border-radius: 50%;
+}
+
 #google-reviews {
 display:flex;
 flex-wrap:wrap;
