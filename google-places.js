@@ -185,12 +185,12 @@ I add author's profile image from Google+ API*/
           $element.append(html);
         }
         
-         /*var renderRating = function(rating){
+         var renderRating = function(rating){
             var html = "";
             var star = renderAverageStars(rating);
-            html = "<div class='average-rating'>Nuestro sitio obtiene una valoración media de: "+star+"</div>";
+            //html = "<div class='average-rating'>Nuestro sitio obtiene una valoración media de: "+star+"</div>";
             $element.append(html);
-        }*/
+        }
 
         var renderHours = function(element, data){
           if(element instanceof jQuery){
