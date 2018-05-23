@@ -207,12 +207,7 @@ I add author's profile image from Google+ API*/
           if(element instanceof jQuery){
             var map = plugin.settings.staticMap;
             element.append(
-              "<img src='https://maps.googleapis.com/maps/api/staticmap"+
-                "?size="+map.width+"x"+map.height+
-                "&zoom="+map.zoom+
-                "&maptype="+map.type+
-                "&markers=size:large%7Ccolor:red%7C"+data+"'&key=AIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg>"+
-              "</img>");
+              "<img src='https://maps.googleapis.com/maps/api/staticmap?center=Gavisa&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:C%7C37.9100237,-4.7329271&key=AIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg'</img>");
           }
         }
 
