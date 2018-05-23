@@ -157,13 +157,6 @@ I add author's profile image from Google+ API*/
           return reviews;
         }
 
-        var renderRating = function(rating){
-            var html = "";
-            var star = renderAverageStars(rating);
-            html = "<div class='average-rating'><h4>"+star+"</h4></div>";
-            $element.append(html);
-        }
-
         var renderReviews = function(reviews){
           reviews = sort_by_date(reviews);
           reviews = filter_minimum_rating(reviews);
@@ -190,6 +183,13 @@ I add author's profile image from Google+ API*/
             html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image+"></span><br><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text' align='justify'>"+reviews[i].text+"</p></div>";
           };
           $element.append(html);
+        }
+        
+         var renderRating = function(rating){
+            var html = "";
+            var star = renderAverageStars(rating);
+            html = "<div class='average-rating'>Nuestro sitio obtiene una valoración media de: "+star+"</div>";
+            $element.append(html);
         }
 
         var renderHours = function(element, data){
