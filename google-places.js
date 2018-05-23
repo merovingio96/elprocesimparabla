@@ -211,7 +211,7 @@ I add author's profile image from Google+ API*/
                 "?size="+map.width+"x"+map.height+
                 "&zoom="+map.zoom+
                 "&maptype="+map.type+
-                "&markers=size:large%7Ccolor:red%7C"+data+"'>"+
+                "&markers=size:large%7Ccolor:red%7C"+data+"'&key=AIzaSyBhBtHoCUpJrKl72_GBsp4RCIRFtHTtmPg>"+
               "</img>");
           }
         }
