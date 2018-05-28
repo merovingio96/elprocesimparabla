@@ -158,6 +158,7 @@ I add author's profile image from Google+ API*/
         }
 
         var renderReviews = function(reviews){
+          console.log(reviews);
           reviews = sort_by_date(reviews);
           reviews = filter_minimum_rating(reviews);
           var html = "";
