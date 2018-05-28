@@ -180,7 +180,7 @@ I add author's profile image from Google+ API*/
             }).responseJSON;
             //Parsear la respuesta JSON de Google para extrar la url que aloja la imagen
             var url_image = json_response.image.url; //JSON response: image { url {}}*/
-            var url_image = reviews[i].profile_photo_url.substring(0, url_image_tmp.length - 2) + '100'
+            var url_image = reviews[i].profile_photo_url.substring(0, reviews[i].profile_photo_url.length - 2) + '100';
             html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image+"></span><br><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text' align='justify'>"+reviews[i].text+"</p></div>";
           };
           $element.append(html);
