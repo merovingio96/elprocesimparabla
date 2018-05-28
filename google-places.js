@@ -183,7 +183,7 @@ I add author's profile image from Google+ API*/
             var length_url_image = url_image.length; //Extraer longitud url
             var url_image_resize = url_image.substr(0, length_url_image-2); //Elimino el 50 del final
             url_image_resize = url_image_resize.concat("100"); //Reescalo imagen a 100
-            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image+"></span><br><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text' align='justify'>"+reviews[i].text+"</p></div>";
+            html = html+"<div class='review-item'><div class='review-meta'><span class='review-author-image'><img src="+url_image_resize+"></span><br><span class='review-author'>"+reviews[i].author_name+"</span><span class='review-sep'>, </span><span class='review-date'>"+date+"</span></div>"+stars+"<p class='review-text' align='justify'>"+reviews[i].text+"</p></div>";
           };
           $element.append(html);
         }
