@@ -160,7 +160,9 @@ I add author's profile image from Google+ API*/
         var renderReviews = function(reviews){
           console.log(reviews);
           reviews = sort_by_date(reviews);
+            console.log(reviews);
           reviews = filter_minimum_rating(reviews);
+            console.log(reviews);
           var html = "";
           var row_count = (plugin.settings.max_rows > 0)? plugin.settings.max_rows - 1 : reviews.length - 1;
           // make sure the row_count is not greater than available records
